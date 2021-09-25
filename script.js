@@ -2,7 +2,7 @@
 var generateBtn = document.querySelector("#generate");
 var upperCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 var lowerCase = 'abcdefghijklmnopqrstuvwxyz'
-var specialChar = "!#$%&'()*+,-./:;<=>?@][^_`{|}~"
+var specialChar = "'`({[^}&+/.%]|<)*,-=$_:;~!>?@#"
 var numeric = '1234567890'
 
 // Write password to the #password input
