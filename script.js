@@ -40,12 +40,16 @@ function generatePassword() {
   if (numericChecked) {
     parameters += numeric;
   }
+
+  else {
+    confirm('Your password must contain characters!')
+  }
   //create empty string for new password
   var newpassword = ''
 
   //for loop to generate password
-  for (var i=0; i< 10; i++) {
-    newpassword += parameters.charAt(Math.floor(Math.random() * parameters.length))
+  for (var i=0; i< passwordLength; i++) {
+    newpassword += parameters.charAt(Math.floor(Math.random() * parameters.length));
 };
 //returns result
     return newpassword
