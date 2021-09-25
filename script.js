@@ -1,13 +1,9 @@
 // variable initialization
 var generateBtn = document.querySelector("#generate");
-const upperCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
-const lowerCase = 'abcdefghijklmnopqrstuvwxyz'
-const specialChar = "!#$%&'()*+,-./:;<=>?@][^_`{|}~"
-const numeric = '1234567890'
-// const upperCaseChecked = document.querySelector("#upperCase");
-// const lowerCaseChecked = document.querySelector("#lowerCase");
-// const numericChecked = document.querySelector("#numeric");
-// const specialCharChecked = document.querySelector("#SpecialChar");
+var upperCase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
+var lowerCase = 'abcdefghijklmnopqrstuvwxyz'
+var specialChar = "!#$%&'()*+,-./:;<=>?@][^_`{|}~"
+var numeric = '1234567890'
 
 // Write password to the #password input
 function writePassword() {
@@ -15,7 +11,6 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
-  shuffle();
 }
 
 function generatePassword() {
@@ -23,29 +18,37 @@ function generatePassword() {
   var passwordLength = prompt("Input Desired Password Length", "(Must be in between 8 and 128 characters long): ")
   if ( passwordLength < 8 || passwordLength > 128 || isNaN(passwordLength) ) {
     alert("Number must be in between 8 and 128!");
+    return;
+  }
+//prompts to determine new password characteristics
+  var lowerCaseChecked = confirm('Would you like to include lowercase letters?');
+  if (lowerCaseChecked) {
+    parameters += lowerCase;
   }
 
-  
-  // for (var i=0; i< 10; i++) {
-  //   password += upperCase(Math.floor(Math.random() * upperCase.length))};
-  //   console.log(password);
+  var UpperCaseChecked = confirm('Would you like to include uppercase letters?');
+  if (UpperCaseChecked) {
+    parameters += upperCase;
+  }
+
+  var specialCharChecked = confirm('Would you like to include Special Characters?');
+  if (specialCharChecked) {
+    parameters += specialChar;
+  }
+
+  var numericChecked = confirm('Would you like to include numerical letters?');
+  if (numericChecked) {
+    parameters += numeric;
+  }
+  //create empty string for new password
+  var newpassword = ''
+
+  //for loop to generate password
+  for (var i=0; i< 10; i++) {
+    newpassword += parameters.charAt(Math.floor(Math.random() * parameters.length))
+};
+//returns result
+    return newpassword
 }
-
-// function shuffle(upperCase, lowerCase) {
-//   let password = '';
-//   for (var i=0; i< 10; i++) {
-//     password += upperCase(Math.floor(Math.random() * upperCase.length))};
-//     console.log(password);
-//   }
-// // Add event listener to generate button
-// generateBtn.addEventListener("click", writePassword);
-
-//   // console.log("Hey Toni lol")
-//   // if (upperCaseChecked.checked) {
-//   // console.log(upperCase.sort(() => 5 + Math.random()))
-//   // } 
-//   if (upperCaseChecked && lowerCaseChecked && specialCharChecked && numericChecked == true ) {
-//     const passArray = [upperCase + lowerCase + specialChar + numeric]
-//   }
-
-//   // else if ()
+//Attach an event listener to the generate button to start the function
+generateBtn.addEventListener("click", writePassword);
